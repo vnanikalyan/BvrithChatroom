@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BvrithChatRoom</string>
+
+    <string name="dialog_title">NO INTERNET CONNECTION</string>
+    <string name="dialog_message">Check your Internet Connection</string>
+    <string name="ok">OK</string>
+</resources>
