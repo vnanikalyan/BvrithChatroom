@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class MainActivity extends Activity {
     WebView wv;
@@ -18,7 +19,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        wv = (WebView) findViewById(R.id.mywebview);
+        wv = findViewById(R.id.mywebview);
+        wv.setWebViewClient(new MyBrowser());
 
 
         if(Config.isNetworkStatusAvailable (getApplicationContext())) {
@@ -60,6 +62,14 @@ public class MainActivity extends Activity {
             AlertDialog dialog = builder.create();
             dialog.setCanceledOnTouchOutside(false);
             dialog.show();
+        }
+    }
+
+    private class MyBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
         }
     }
 }
